@@ -32,7 +32,7 @@
       </Value>
     </Data>
     <Data name="tTool" access="public" xsi:type="array" type="tool" size="1">
-      <Value key="0" fatherId="flange[0]" ioLink="valve1" />
+      <Value key="0" fatherId="flange[0]" ioLink="ValveIO/valve1" />
     </Data>
     <Data name="sTrajPtTaskName" access="public" xsi:type="array" type="string" size="1" />
     <Data name="bTrajPtOverrun" access="public" xsi:type="array" type="bool" size="1" />
@@ -115,6 +115,37 @@
             <Field name="nJoints" xsi:type="array" type="num" size="10" />
             <Field name="nVelocity" xsi:type="array" type="num" size="1" />
             <Field name="nDuration" xsi:type="array" type="num" size="1" />
+          </Value>
+        </Field>
+        <Field name="prefix" xsi:type="array" type="Prefix" size="1">
+          <Value key="0">
+            <Field name="nLength" xsi:type="array" type="num" size="1" />
+            <Field name="nData" xsi:type="array" type="num" size="4" />
+          </Value>
+        </Field>
+        <Field name="body" xsi:type="array" type="Body" size="1">
+          <Value key="0">
+            <Field name="nData" xsi:type="array" type="num" size="52" />
+          </Value>
+        </Field>
+      </Value>
+    </Data>
+    <Data name="rosIoWriteRequestMsg" access="public" xsi:type="array" type="IoWriteRequestMsg" size="1">
+      <Value key="0">
+        <Field name="header" xsi:type="array" type="Header" size="1">
+          <Value key="0">
+            <Field name="nMsgType" xsi:type="array" type="num" size="1" />
+            <Field name="nCommType" xsi:type="array" type="num" size="1" />
+            <Field name="nReplyCode" xsi:type="array" type="num" size="1" />
+            <Field name="nData" xsi:type="array" type="num" size="12" />
+          </Value>
+        </Field>
+        <Field name="ioWriteRequest" xsi:type="array" type="IoWriteRequest" size="1">
+          <Value key="0">
+            <Field name="nCount" xsi:type="array" type="num" size="1" />
+            <Field name="nType" xsi:type="array" type="num" size="1" />
+            <Field name="nIndex" xsi:type="array" type="num" size="1" />
+            <Field name="nValue" xsi:type="array" type="num" size="1" />
           </Value>
         </Field>
         <Field name="prefix" xsi:type="array" type="Prefix" size="1">
@@ -247,6 +278,37 @@
             <Field name="nJoints" xsi:type="array" type="num" size="10" />
             <Field name="nVelocity" xsi:type="array" type="num" size="1" />
             <Field name="nDuration" xsi:type="array" type="num" size="1" />
+          </Value>
+        </Field>
+        <Field name="prefix" xsi:type="array" type="Prefix" size="1">
+          <Value key="0">
+            <Field name="nLength" xsi:type="array" type="num" size="1" />
+            <Field name="nData" xsi:type="array" type="num" size="4" />
+          </Value>
+        </Field>
+        <Field name="body" xsi:type="array" type="Body" size="1">
+          <Value key="0">
+            <Field name="nData" xsi:type="array" type="num" size="52" />
+          </Value>
+        </Field>
+      </Value>
+    </Data>
+    <Data name="rosIoWriteRequestAck" access="public" xsi:type="array" type="IoWriteRequestMsg" size="1">
+      <Value key="0">
+        <Field name="header" xsi:type="array" type="Header" size="1">
+          <Value key="0">
+            <Field name="nMsgType" xsi:type="array" type="num" size="1" />
+            <Field name="nCommType" xsi:type="array" type="num" size="1" />
+            <Field name="nReplyCode" xsi:type="array" type="num" size="1" />
+            <Field name="nData" xsi:type="array" type="num" size="12" />
+          </Value>
+        </Field>
+        <Field name="ioWriteRequest" xsi:type="array" type="IoWriteRequest" size="1">
+          <Value key="0">
+            <Field name="nCount" xsi:type="array" type="num" size="1" />
+            <Field name="nType" xsi:type="array" type="num" size="1" />
+            <Field name="nIndex" xsi:type="array" type="num" size="1" />
+            <Field name="nValue" xsi:type="array" type="num" size="1" />
           </Value>
         </Field>
         <Field name="prefix" xsi:type="array" type="Prefix" size="1">

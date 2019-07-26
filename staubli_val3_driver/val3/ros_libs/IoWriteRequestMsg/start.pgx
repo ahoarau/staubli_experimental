@@ -1,8 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
-  <Program name="encodeAck" access="public" >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
     <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
+  // Copyright (c) 2019, isys vision
   //
   // Licensed under the Apache License, Version 2.0 (the "License");
   // you may not use this file except in compliance with the License.
@@ -18,19 +19,6 @@
 
 
 
-  switch rosGenericMsg.header.nMsgType
-    case 11
-      call encTrajPtAck()
-    break
-    case 14
-      call encTrajPtFAck()
-    break
-    case 65202
-      call encIoWriteAck()
-    break
-    default
-    break
-  endSwitch
 end]]></Code>
   </Program>
 </Programs>

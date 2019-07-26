@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2" >
-  <Program name="encodeAck" access="public" >
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="encIoWriteAck" access="public">
     <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
   //
@@ -18,19 +18,13 @@
 
 
 
-  switch rosGenericMsg.header.nMsgType
-    case 11
-      call encTrajPtAck()
-    break
-    case 14
-      call encTrajPtFAck()
-    break
-    case 65202
-      call encIoWriteAck()
-    break
-    default
-    break
-  endSwitch
+  // encode 'prefix' and 'header'
+  call encPrefixHeader(rosIoWriteRequestAck.prefix, rosIoWriteRequestAck.header)
+
+  // encode 'sequence' variable of body message (data)
+  toBinary(rosIoWriteRequestAck.ioWriteRequest.nCount,1,"-4l",rosIoWriteRequestAck.body.nData)
+
+  // encodings of 'joints[10]', 'velocity' and 'duration' ignored to save CPU time, since values are all zeros
 end]]></Code>
   </Program>
 </Programs>

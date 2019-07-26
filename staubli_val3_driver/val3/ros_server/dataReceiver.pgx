@@ -47,15 +47,32 @@
     nHeaderTime = clock() - l_nStartTime
     if (l_nMsgRecvState==1)
       call decodeMsgHeader(l_nMsgRecvState)
+      popUpMsg(toString("", rosGenericMsg.header.nMsgType))
     endIf
     if (l_nMsgRecvState==2)
       call recvMsgBody(l_nMsgRecvState)
+      logMsg("2b")
     endIf
     if (l_nMsgRecvState==3)
       call decodeMsgBody(l_nMsgRecvState)
+      logMsg("3")
     endIf
     if (l_nMsgRecvState==4)
-      call pushMotion(l_nMsgRecvState)
+      switch rosGenericMsg.header.nMsgType
+       case 11
+         call pushMotion(l_nMsgRecvState)
+       break
+       case 14
+         call pushMotion(l_nMsgRecvState)
+       break
+       case 65202
+          logMsg("IOWrite")
+         call ioWrite(l_nMsgRecvState)
+       break
+       default
+         popUpMsg("Unhandled msg type")
+       break
+      endSwitch
     endIf
     if (l_nMsgRecvState==5)
       call encodeAck()

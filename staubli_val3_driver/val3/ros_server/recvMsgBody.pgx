@@ -33,6 +33,9 @@
     case 14
       call recvTrajPtFull(l_bFlag)
     break
+    case 65202
+      call recvIoWriteRequest(l_bFlag)
+    break
     default
     break
   endSwitch

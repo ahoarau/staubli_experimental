@@ -66,6 +66,11 @@
   // flush buffer of outgoing socket
   clearBuffer(siTcpIpFbk)
   
+  tTool.gripper = true
+  popUpMsg("Angeschaltet")
+
+  
+  
   // check if robot is not in emergency stop and wait until estop is reset
   if (esStatus() == 2)
     popUpMsg("Please reset E-Stop")

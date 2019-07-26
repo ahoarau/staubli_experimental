@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="ioWrite" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_nMsgRecvState" type="num" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_bOk" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nCounter" type="num" xsi:type="array" size="1" />
+      <Local name="l_nJointError" type="num" xsi:type="array" size="1" />
+      <Local name="l_mTrajPt" type="MotionCmd" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  // Copyright (c) 2016, Ocado Technology - Robotics Research Team
+  //
+  // Licensed under the Apache License, Version 2.0 (the "License");
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //     http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an "AS IS" BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
+
+
+  logMsg("IOWRITE"+toString("", rosIoWriteRequestMsg.ioWriteRequest.nIndex))
+  
+  tTool.gripper = false
+  delay(2)
+  tTool.gripper = true
+  delay(2)
+    tTool.gripper = false
+  delay(2)
+  tTool.gripper = true
+  delay(2)
+    tTool.gripper = false
+  delay(2)
+  tTool.gripper = true
+  delay(2)
+  
+  //if (rosIoWriteRequestMsg.ioWriteRequest.nIndex == 1)
+    if (rosIoWriteRequestMsg.ioWriteRequest.nValue==0)
+       tTool.gripper = false
+    else
+       tTool.gripper = true
+    endIf
+  //endIf
+  
+    
+    if (l_bOk==false)
+      // could not push trajectory point into buffer
+      // thus ACK should flag FAILURE, but only if comm type is request
+      if (rosGenericMsg.header.nCommType==2)
+        
+            rosIoWriteRequestAck.header.nReplyCode=2
+
+      endIf
+    endIf
+  
+  // check whether ACK should be sent
+  if (rosGenericMsg.header.nCommType == 2)
+    // comm type request requires ACK
+    x_nMsgRecvState = 5
+  else
+    // other comm types (e.g., topic) does not require ACK, hence skip state
+    x_nMsgRecvState = 0
+  endIf
+end]]></Code>
+  </Program>
+</Programs>

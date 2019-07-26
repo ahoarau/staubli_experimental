@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
-  <Program name="sendAck" access="public">
+  <Program name="recvIoWriteRequest" access="public">
     <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
-      <Parameter name="x_nMsgRecvState" type="num" xsi:type="element" use="reference" />
+      <Parameter name="x_bFlag" type="bool" xsi:type="element" use="reference" />
     </Parameters>
     <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
@@ -21,23 +21,13 @@
 
 
 
-  switch rosGenericMsg.header.nMsgType
-    case 11
-      call sendRosMsg(siTcpIpMotion, rosTrajPtAck.prefix, rosTrajPtAck.header, rosTrajPtAck.body, nInConnFlag)
-    break
-    case 14
-      call sendRosMsg(siTcpIpMotion, rosTrajPtFAck.prefix, rosTrajPtFAck.header, rosTrajPtFAck.body, nInConnFlag)
-    break
-    case 65202
-      call sendRosMsg(siTcpIpMotion, rosIoWriteRequestAck.prefix, rosIoWriteRequestAck.header, rosIoWriteRequestAck.body, nInConnFlag)
-    break
-    default
-    break
-  endSwitch
+  // attempt to receive message ID 65202 data (prefix and header are in rosGenericMsg)
+  rosIoWriteRequestMsg.prefix.nLength=rosGenericMsg.prefix.nLength
+  rosIoWriteRequestMsg.header.nMsgType=rosGenericMsg.header.nMsgType
+  rosIoWriteRequestMsg.header.nCommType=rosGenericMsg.header.nCommType
+  rosIoWriteRequestMsg.header.nReplyCode=rosGenericMsg.header.nReplyCode
 
-  // regardless of result from sending ACK
-  // reset state machine to receive new messages
-  x_nMsgRecvState=0
+  call recvData(siTcpIpMotion,rosIoWriteRequestMsg.body.nData,nInConnFlag,x_bFlag)
 end]]></Code>
   </Program>
 </Programs>

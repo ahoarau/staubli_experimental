@@ -33,6 +33,10 @@
     case 14
       call decTrajPtFull(l_bFlag)
     break
+    case 65202
+      logMsg("decode")
+      call decIoWriteRequest(l_bFlag)
+    break
     default
     break
   endSwitch
@@ -50,6 +54,9 @@
         case 14
           rosTrajPtFAck.header.nReplyCode=2
         break
+//        case 65202
+//          rosIoWriteReqAck.header.nReplyCode=2
+//        break
         default
         break
       endSwitch
