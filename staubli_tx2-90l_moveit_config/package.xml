@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>staubli_tx2-90l_moveit_config</name>
+  <version>0.1.0</version>
+  <description>
+    <p>
+      MoveIt package for the Staubli tx2 90l
+    </p>
+  </description>
+  <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
+  <maintainer email="simon.schmeisser@isys-vision.de">Simon Schmeisser (Isys Vision)</maintainer>
+
+  <license>BSD</license>
+
+  <url type="bugtracker">https://github.com/ros-industrial/staubli_experimental</url>
+  <url type="repository">https://github.com/ros-industrial/staubli_experimental</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <test_depend>roslaunch</test_depend>
+
+  <!-- <exec_depend>staubli_tx2-90l_moveit_plugins</exec_depend> -->
+  <exec_depend>staubli_tx2-90l_support</exec_depend>
+  <exec_depend>industrial_robot_simulator</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>moveit_fake_controller_manager</exec_depend>
+  <exec_depend>moveit_planners_ompl</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_ros_visualization</exec_depend>
+  <exec_depend>moveit_ros_warehouse</exec_depend>
+  <exec_depend>moveit_simple_controller_manager</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>warehouse_ros</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <architecture_independent />
+    <rosindex>
+      <tags>
+        <tag>moveit</tag>
+        <tag>staubli</tag>
+        <tag>industrial</tag>
+        <tag>ros-industrial</tag>
+        <tag>tx2-90l</tag>
+      </tags>
+    </rosindex>
+    <ros_industrial>
+      <support_level value="community" />
+    </ros_industrial>
+  </export>
+</package>
