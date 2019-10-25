@@ -1,4 +1,4 @@
-# staubli_tx2-90l_moveit_config
+# staubli_tx2-90_moveit_config
 
 ## Overview
 

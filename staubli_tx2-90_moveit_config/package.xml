@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
-  <name>staubli_tx2-90l_moveit_config</name>
+  <name>staubli_tx2-90_moveit_config</name>
   <version>0.1.0</version>
   <description>
     <p>
-      MoveIt package for the Staubli tx2 90l
+      MoveIt package for the Staubli tx2 90
     </p>
   </description>
   <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
@@ -43,7 +43,9 @@
         <tag>staubli</tag>
         <tag>industrial</tag>
         <tag>ros-industrial</tag>
+        <tag>tx2-90</tag>
         <tag>tx2-90l</tag>
+        <tag>tx2-90xl</tag>
       </tags>
     </rosindex>
     <ros_industrial>

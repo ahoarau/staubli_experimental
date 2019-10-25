@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(staubli_tx2-90l_moveit_config)
+project(staubli_tx2-90_moveit_config)
 
 find_package(catkin REQUIRED)
 
